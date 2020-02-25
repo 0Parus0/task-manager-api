@@ -79,6 +79,9 @@ router.post('/users/logoutAll', auth, async(req, res) => {
 router.get('/users/me', auth, async (req, res) => {
   try {
     res.send(req.user);
+    if(!req.user) {
+      throw new Error()
+    }
   } catch (error) {
     res.sendStatus(401);
   }
